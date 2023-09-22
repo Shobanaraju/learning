@@ -1,0 +1,126 @@
+<head>
+    <title></title>
+</head>
+
+<body>
+
+    <h1>Students Marklist</h1>
+
+    <ng-container>
+        <button class="notification" mat-raised-button color="accent" routerLink="/" [style.marginRight.px]="20"
+            style="display: flex; justify-content:flex-end" matTooltip="Home Page">
+            <mat-icon>home</mat-icon> Home
+        </button>
+    </ng-container>
+    <br>
+    <br>
+    <div class="fluid-container">
+        <ul class="info-list">
+            <li><b>Name</b>{{name}}</li>
+            <li><b>Roll No</b>{{rollNo}}</li>
+        </ul>
+
+    </div>
+    <br>
+
+    <div class="box">
+        <br>
+        <div class="container">
+            <div class="row" id="sub">
+                <div class="col-sm">
+                    English
+                    <input matInput type="text" [(ngModel)]="eng">
+                </div>
+                <div class="col-sm">
+                    Maths
+                    <input matInput type="text" [(ngModel)]="mat">
+                </div>
+                <div class="col-sm">
+                    Science
+                    <input matInput type="text" [(ngModel)]="sci">
+                </div>
+                <div class="col-sm">
+                    Social
+                    <input matInput type="text" [(ngModel)]="soc">
+                </div>
+                <div class="col-sm">
+                    Tamil
+                    <input matInput type="text" [(ngModel)]="tam">
+                </div>
+            </div>
+
+            <!-- <div class="row" id="sub">
+            <div class="col-sm" style="margin-left:25px">
+                <input matInput type="text" [(ngModel)]="eng">
+            </div>
+            <div class="col-sm">
+                <input matInput type="text" [(ngModel)]="mat">
+            </div>
+            <div class="col-sm">
+                <input matInput type="text" [(ngModel)]="sci">
+            </div>
+            <div class="col-sm">
+                <input matInput type="text" [(ngModel)]="soc">
+            </div>
+            <div class="col-sm">
+                <input matInput type="text" [(ngModel)]="tam">
+            </div>
+        </div> -->
+            <br>
+            <br>
+
+            <div class="text-center">
+
+                <button type="button" class="btn btn-primary" style="color:brown" (click)="add()">ADD</button>
+            </div>
+
+
+
+
+            <br>
+            <br>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div *ngIf="markList">
+    <div *ngFor="let mark of marks;">
+    <h4>
+    <ul class="info-list">
+        <li><b>English</b>{{mark.eng}}</li>
+        <li><b>Maths</b>{{mark.mat}}</li>
+        <li><b>Science</b>{{mark.sci}}</li>
+        <li><b>Social</b>{{mark.soc}} </li>
+        <li><b>Tamil</b>{{mark.tam}}</li>
+       
+       
+      </ul>
+      </h4>
+    </div>
+</div>
+
+    
+      
+
+
+    <!-- <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            One of three columns
+          </div>
+          <div class="col-sm">
+            One of three columns
+          </div>
+          <div class="col-sm">
+            One of three columns
+          </div>
+        </div>
+      </div> -->
+
+
+
+
+
+</body>

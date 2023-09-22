@@ -1,0 +1,65 @@
+
+
+ul.info-list {
+    list-style-type: none;
+    line-height: 30px;
+    color:brown
+   
+  }
+  ul.info-list li b {
+    position: relative;
+    display: inline-block;
+    min-width: 144px;
+    min-width: 165px;
+    margin-right: 6px;
+    font-size: large;
+    
+    
+  }
+  ul.info-list li b:after {
+    content: ":";
+    position: absolute;
+    right: 0;
+   
+  }
+
+  h1{
+    font-size: larger;
+    font-weight: 500;
+    color:red;
+    margin-left:45%
+  }
+
+  .notification {
+    display:flex;
+    position:relative;
+    width:100%;
+    position:absolute;
+    right:20px;
+    color:black;
+
+  }
+
+ 
+
+  #sub{
+    font-size: medium;
+    color:chocolate;
+    font-weight: 500;
+    
+  }
+
+  .box 
+{
+    width: 90%; 
+    height:auto;
+    margin-left: 50px;
+    border: 1px solid #000183;
+    background-color:lightblue;
+   
+  }
+
+
+ 
+
+    

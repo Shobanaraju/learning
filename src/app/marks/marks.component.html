@@ -8,8 +8,8 @@
 
     <ng-container>
         <button class="notification" mat-raised-button color="accent" routerLink="/" [style.marginRight.px]="20"
-            style="display: flex; justify-content:flex-end" matTooltip="Home Page">
-            <mat-icon>home</mat-icon> Home
+            style="display: flex; justify-content:flex-end">
+            <mat-icon matTooltip="Home Page">home</mat-icon> Home
         </button>
     </ng-container>
     <br>
@@ -18,6 +18,7 @@
         <ul class="info-list">
             <li><b>Name</b>{{name}}</li>
             <li><b>Roll No</b>{{rollNo}}</li>
+            <mat-icon matTooltip="marks" (click)="fetchMarks()">list</mat-icon> Marks
         </ul>
 
     </div>
@@ -29,23 +30,24 @@
             <div class="row" id="sub">
                 <div class="col-sm">
                     English
-                    <input matInput type="text" [(ngModel)]="eng">
+                    <input matInput type="text" [(ngModel)]="marksList.english">
+
                 </div>
                 <div class="col-sm">
                     Maths
-                    <input matInput type="text" [(ngModel)]="mat">
+                    <input matInput type="text" [(ngModel)]="marksList.maths">
                 </div>
                 <div class="col-sm">
                     Science
-                    <input matInput type="text" [(ngModel)]="sci">
+                    <input matInput type="text" [(ngModel)]="marksList.science">
                 </div>
                 <div class="col-sm">
                     Social
-                    <input matInput type="text" [(ngModel)]="soc">
+                    <input matInput type="text" [(ngModel)]="marksList.social">
                 </div>
                 <div class="col-sm">
                     Tamil
-                    <input matInput type="text" [(ngModel)]="tam">
+                    <input matInput type="text" [(ngModel)]="marksList.tamil">
                 </div>
             </div>
 
@@ -71,7 +73,8 @@
 
             <div class="text-center">
 
-                <button type="button" class="btn btn-primary" style="color:brown" (click)="add()">ADD</button>
+                <button type="button" class="btn btn-primary" style="color:brown"
+                    (click)="add(marksList.english,marksList.maths,marksList.science,marksList.social,marksList.tamil)">ADD</button>
             </div>
 
 
@@ -86,23 +89,101 @@
     <br>
 
     <div *ngIf="markList">
-    <div *ngFor="let mark of marks;">
-    <h4>
-    <ul class="info-list">
-        <li><b>English</b>{{mark.eng}}</li>
-        <li><b>Maths</b>{{mark.mat}}</li>
-        <li><b>Science</b>{{mark.sci}}</li>
-        <li><b>Social</b>{{mark.soc}} </li>
-        <li><b>Tamil</b>{{mark.tam}}</li>
-       
-       
-      </ul>
-      </h4>
-    </div>
-</div>
+        <div class="fluid-container">
+            <h4>
+                <ul class="info-list">
+                    <li><b>English</b>{{marksList.english}}</li>
+                    <li><b>Maths</b>{{marksList.maths}}</li>
+                    <li><b>Science</b>{{marksList.science}}</li>
+                    <li><b>Social</b>{{marksList.social}} </li>
+                    <li><b>Tamil</b>{{marksList.tamil}}</li>
+                    <!-- <li><b>Total</b>{{getTotalOutstanding()}}</li> -->
 
+
+                </ul>
+            </h4>
+        </div>
+
+    </div>
+
+    <div *ngIf="markListFetched">
+        <div class="fluid-container">
+            <h4>
+                <ul class="info-list">
+                    <li><b>English</b>{{this.marksList.english}}</li>
+                    <li><b>Maths</b>{{this.mat}}</li>
+                    <li><b>Science</b>{{this.sci}}</li>
+                    <li><b>Social</b>{{this.soc}} </li>
+                    <li><b>Tamil</b>{{this.tam}}</li> 
+                    <!-- <li><b>Total</b>{{getTotalOutstanding()}}</li> -->
+
+
+                 </ul>
+            </h4>
+        </div>
+        
+
+    </div>
+
+
+
+
+
+
+     <!-- <div class="table-responsive" *ngIf="markListFetched"> 
+       
     
-      
+          <table #firstTable  mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+        
+  
+    
+            <ng-container matColumnDef="english">
+              <th class="w-5" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by shpi">
+                Student ID
+              </th>
+              <td class="w-5" mat-cell *matCellDef="let element"> {{element.english}} </td>
+            </ng-container>
+    
+    
+            <ng-container matColumnDef="maths">
+              <th class="w-5" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by shpi">
+               Name
+              </th>
+              <td class="w-5" mat-cell *matCellDef="let element"> {{element.maths}} </td>
+            </ng-container> 
+    
+            
+             <ng-container matColumnDef="science">
+              <th class="w-5" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by username">
+                Date of Birth
+              </th>
+              <td class="w-5" mat-cell *matCellDef="let element"> {{element.science}} </td>
+            </ng-container> 
+    
+            
+            <ng-container matColumnDef="social">
+              <th class="w-5" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by password">
+                Roll No
+              </th>
+              <td class="w-5" mat-cell *matCellDef="let element"> {{element.social}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="tamil">
+                <th class="w-5" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by password">
+                  Roll No
+                </th>
+                <td class="w-5" mat-cell *matCellDef="let element"> {{element.tamil}} </td>
+              </ng-container>
+
+  
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div> 
+   --> 
+
+
+
 
 
     <!-- <div class="container">

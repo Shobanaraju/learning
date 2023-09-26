@@ -1,5 +1,5 @@
 export class Student {
-    employeeId!:number;
+    employeeId!:any;
     name!:any;
     rollNo!:any;
     dob!:any;

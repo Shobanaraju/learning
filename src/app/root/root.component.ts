@@ -123,7 +123,8 @@ sendMarks(studentId:any,name: any, rollNo: any) {
   console.log(queryParams)
   
  
-  this.router.navigate(['/marks'], { queryParams})
+  this.router.navigate(['/marks'], { queryParams});
+
 }
   //using route parameters
   // sendMarks(name:any){

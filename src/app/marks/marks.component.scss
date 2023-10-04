@@ -59,6 +59,28 @@ ul.info-list {
    
   }
 
+  /* Style all mat-list-items */
+// .mat-list-item {
+//   background-color: #f0f0f0;
+//   border: 1px solid #ccc;
+//   padding: 10px;
+// }
+
+// /* Style the content within mat-list-item */
+// .mat-list-item-content {
+//   font-weight: bold;
+//   font-size: larger;
+// }
+
+// /* Style the ripple effect */
+// .mat-list-item-ripple {
+//   background-color: rgba(15, 110, 15, 0.1);
+// }
+
+.mdc-list-item__primary-text {
+  color: rgb(56 151 66);
+}
+
 
  
 

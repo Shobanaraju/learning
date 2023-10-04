@@ -7,12 +7,26 @@ import { MarksList } from '../marks-list';
 import { MarksResponse } from '../marks-response';
 import { ServiceService } from '../services/service.service';
 
+import { trigger, state, style, animate, transition } from '@angular/animations';
+
+
+
 @Component({
   selector: 'app-marks',
   templateUrl: './marks.component.html',
-  styleUrls: ['./marks.component.scss']
+  styleUrls: ['./marks.component.scss'],
+  animations: [
+    trigger('myAnimation', [
+      state('start', style({ backgroundColor: 'red' })),
+      state('end', style({ backgroundColor: 'blue' })),
+      transition('start => end', animate('2s')),
+      transition('end => start', animate('2s')),
+    ]),
+  ],
 })
 export class MarksComponent {
+
+  animateState = 'start';
 
   markList=false
 
@@ -65,6 +79,10 @@ export class MarksComponent {
       this.stuId=param1
       // Use the received parameters as needed
     });
+  }
+
+  startAnimation() {
+    this.animateState = this.animateState === 'start' ? 'end' : 'start';
   }
 
   
@@ -131,6 +149,7 @@ export class MarksComponent {
       })
 
     }
+    
 
     getTotalOutstanding() {
       return this.marksTableList.map(t => t.english).reduce((acc, value) => acc + value, 0);

@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MarksList } from '../marks-list';
+import { RegResponse } from '../reg-response';
 import { Student } from '../student';
 
 @Injectable({
@@ -65,6 +66,25 @@ export class ServiceService {
     console.log("student id service call")
     console.log(stuId)
     return this.httpClient.get<any>(`${this.fetchMarksUrl}/?employeeId=${stuId}`)
+  }
+
+
+  private regUrl="http://localhost:8080/userinfo-service/signup"
+  regUser(regResponse:RegResponse):Observable<any>{
+    console.log("service call ===============")
+    console.log(name)
+    const header = { 'content-type': 'application/json' }
+    const body = JSON.stringify(regResponse);
+    const params = new HttpParams()
+    .set('name',regResponse.name)
+    .set('email',regResponse.email)
+    .set('password',regResponse.password)
+
+    console.log("params ===============")
+    console.log(params)
+    console.log(body)
+    return this.httpClient.post<any>(this.regUrl, body, { headers: header, 'params': params});
+    
   }
 }
 

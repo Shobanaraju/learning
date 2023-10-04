@@ -21,6 +21,10 @@ import { MatTableModule } from '@angular/material/table';
 import { ValueArrayPipePipe } from './value-array-pipe.pipe';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatListModule } from '@angular/material/list';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+
 
 
 
@@ -29,9 +33,13 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     AppComponent,
     MarksComponent,
     RootComponent,
-    ValueArrayPipePipe
+    ValueArrayPipePipe,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
+   
+    MatInputModule,
     MatTableModule,
     MatTabsModule,
     MatTooltipModule,
@@ -46,6 +54,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatCheckboxModule,
     MatSlideToggleModule,
     HttpClientModule,
+    MatListModule
+    
     
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy } ],

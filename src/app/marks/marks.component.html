@@ -7,21 +7,53 @@
     <h1>Students Marklist</h1>
 
     <ng-container>
-        <button class="notification" mat-raised-button color="accent" routerLink="/" [style.marginRight.px]="20"
-            style="display: flex; justify-content:flex-end">
+        <button class="notification" mat-raised-button color="accent"  [style.marginRight.px]="20"
+            style="display: flex; justify-content:flex-end" routerLink="/admin">
             <mat-icon matTooltip="Home Page">home</mat-icon> Home
         </button>
     </ng-container>
     <br>
     <br>
-    <div class="fluid-container">
+    <!-- <div class="fluid-container">
+     
         <ul class="info-list">
+            
             <li><b>Name</b>{{name}}</li>
             <li><b>Roll No</b>{{rollNo}}</li>
             <mat-icon matTooltip="marks" (click)="fetchMarks()">list</mat-icon> Marks
-        </ul>
-
+          </ul>
+    </div> -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <!-- First List Item -->
+          <mat-list>
+            <mat-list-item>
+              <!-- Your content for the first list item -->
+              <span style="color:brown;font-weight: 500;">Name&nbsp;:&nbsp;{{name}}</span>
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div class="col-md-6">
+          <!-- Mat Icon -->
+          <mat-icon matTooltip="marks" (click)="fetchMarks()" style="color:brown;font-weight: 500;">list</mat-icon>
+          <span style="color:brown;font-weight: 500;">Marks</span> 
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <!-- Second List Item -->
+          <mat-list>
+            <mat-list-item>
+              <!-- Your content for the second list item -->
+              <span style="color:brown;font-weight: 500;">Roll No &nbsp;:&nbsp;{{rollNo}}</span>
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <!-- Add another column if needed -->
+      </div>
     </div>
+    
     <br>
 
     <div class="box">
@@ -124,6 +156,9 @@
         
 
     </div>
+
+    <div class="colorful-animation" [@myAnimation]="animateState"></div>
+<button (click)="startAnimation()">Start Animation</button>
 
 
 

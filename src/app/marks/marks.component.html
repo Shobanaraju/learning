@@ -1,3 +1,36 @@
+<div class="offcanvas offcanvas-start" tabindex="-1" id="drawer">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" style="font-weight: 800;font-size: larger;">Menus</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="list-unstyled">
+      <li><a style="font-size: large;" routerLink="/admin" routerLinkActive="active">Home</a></li><br>
+      <li><a style="font-size: large;" routerLink="/addStudent" routerLinkActive="active">Add Student</a></li><br>
+      <li><a style="font-size: large;" routerLink="/marks" routerLinkActive="active">Marks</a></li>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <li><a style="font-size: large;" routerLink="/" routerLinkActive="active">Logout</a></li>
+
+     
+      <!-- Add more menu items as needed -->
+    </ul>
+  </div>
+  
+</div>
+
+<br>
+<br>
+<div class="margin-left=60px;">
+  
+  <mat-icon style="margin-left:20px;" (click)="openDrawer()">menu</mat-icon>
+</div>
+
+
 <head>
     <title></title>
 </head>
@@ -5,13 +38,12 @@
 <body>
 
     <h1>Students Marklist</h1>
-
-    <ng-container>
+    <!-- <ng-container>
         <button class="notification" mat-raised-button color="accent"  [style.marginRight.px]="20"
             style="display: flex; justify-content:flex-end" routerLink="/admin">
             <mat-icon matTooltip="Home Page">home</mat-icon> Home
         </button>
-    </ng-container>
+    </ng-container> -->
     <br>
     <br>
     <!-- <div class="fluid-container">
@@ -62,7 +94,7 @@
             <div class="row" id="sub">
                 <div class="col-sm">
                     English
-                    <input matInput type="text" [(ngModel)]="marksList.english">
+                    <input matInput type="text" id="english" name="english" [(ngModel)]="marksList.english" (ngModelChange)="englishEntered(marksList.english)">
 
                 </div>
                 <div class="col-sm">
@@ -106,7 +138,7 @@
             <div class="text-center">
 
                 <button type="button" class="btn btn-primary" style="color:brown"
-                    (click)="add(marksList.english,marksList.maths,marksList.science,marksList.social,marksList.tamil)">ADD</button>
+                    (click)="add(marksList.english,marksList.maths,marksList.science,marksList.social,marksList.tamil)">ADD MARKS</button>
             </div>
 
 
@@ -147,7 +179,7 @@
                     <li><b>Science</b>{{this.sci}}</li>
                     <li><b>Social</b>{{this.soc}} </li>
                     <li><b>Tamil</b>{{this.tam}}</li> 
-                    <!-- <li><b>Total</b>{{getTotalOutstanding()}}</li> -->
+                    <li><b>Total</b>{{totalMarks}}</li>
 
 
                  </ul>
@@ -157,8 +189,8 @@
 
     </div>
 
-    <div class="colorful-animation" [@myAnimation]="animateState"></div>
-<button (click)="startAnimation()">Start Animation</button>
+    <!-- <div class="colorful-animation" [@myAnimation]="animateState"></div>
+<button (click)="startAnimation()">Start Animation</button> -->
 
 
 

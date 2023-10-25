@@ -53,18 +53,26 @@
                                 <!-- <div class="divider d-flex align-items-center my-4">
                                   <p class="text-center fw-bold mx-3 mb-0">Or</p>
                                 </div> -->
+
+                                <!-- name input
+                                <div class="form-outline mb-3">
+                                  <input type="name" id="form3Example2" class="form-control form-control-lg" name="name"
+                                    placeholder="Enter password" [(ngModel)]="loginData.name" (ngModelChange)="nameEnter(loginData.name)"  />
+                                  <label class="form-label" for="form3Example4"></label>
+                                </div> -->
                       
                                 <!-- Email input -->
-                                <div class="form-outline mb-4">
-                                  <input type="email" id="form3Example3" class="form-control form-control-lg"
-                                    placeholder="Enter a valid email address" />
-                                  <label class="form-label" for="form3Example3"></label>
+                            
+                                <div class="form-outline mb-3">
+                                  <input type="name" id="form3Example3" class="form-control form-control-lg" name="email"
+                                    placeholder="Enter a valid email" [(ngModel)]="loginData.email" (ngModelChange)="emailEnter(loginData.email)"  />
+                                  <label class="form-label" for="form3Example4"></label>
                                 </div>
                       
                                 <!-- Password input -->
                                 <div class="form-outline mb-3">
-                                  <input type="password" id="form3Example4" class="form-control form-control-lg"
-                                    placeholder="Enter password" />
+                                  <input type="password" id="form3Example4" class="form-control form-control-lg" name="password"
+                                    placeholder="Enter password" [(ngModel)]="loginData.password" (ngModelChange)="passwordEnter(loginData.password)"  />
                                   <label class="form-label" for="form3Example4"></label>
                                 </div>
                       
@@ -81,9 +89,9 @@
                       
                                 <div class="text-center text-lg-start mt-4 pt-2">
                                   <button type="button" align="center" class="btn btn-primary btn-lg"
-                                    style="padding-left: 2.5rem; padding-right: 2.5rem;" routerLink="/admin">Login</button>
+                                    style="padding-left: 2.5rem; padding-right: 2.5rem;" (click)="login()" >Login</button>
                                   <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!"
-                                      class="link-danger" routerLink="/register">Register</a></p>
+                                      class="link-danger"  routerLink="/register">Register</a></p>
                                 </div>
                       
                               </form>

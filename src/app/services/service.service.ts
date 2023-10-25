@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
+import { LoginData } from '../login-data';
 import { MarksList } from '../marks-list';
 import { RegResponse } from '../reg-response';
 import { Student } from '../student';
@@ -29,10 +30,39 @@ export class ServiceService {
   } 
 
 
-  private fetchUrl="http://localhost:8080/userinfo-service/fetch"
-  fetchStudent():Observable<any>{
-    return this.httpClient.get(this.fetchUrl)
-  }
+  // private fetchUrl="http://localhost:8080/userinfo-service/fetch"
+  // fetchStudent():Observable<any>{
+  //   return this.httpClient.get(this.fetchUrl)
+  // }
+
+
+
+  private fetchStudent: BehaviorSubject<Student[]> = new BehaviorSubject<Student[]>([]);
+
+  fetchStudent$ = this.fetchStudent.asObservable();
+
+getFetchStudent(){
+  this.httpClient.get<Student[]>("http://localhost:8080/userinfo-service/fetch")
+  .subscribe((response)=>{
+    console.log(response);
+  this.fetchStudent.next(response);
+  return this.fetchStudent.value
+    
+  })
+
+}
+subscribetoTodos(): Observable<Student[]>{
+  return this.fetchStudent.asObservable();
+}
+
+
+
+
+
+
+
+
+
 
   private studentDeleteURL="http://localhost:8080/userinfo-service/deletebyId"
   deleteStudent(id:any):Observable<any>{
@@ -85,6 +115,27 @@ export class ServiceService {
     console.log(body)
     return this.httpClient.post<any>(this.regUrl, body, { headers: header, 'params': params});
     
+  }
+
+
+  private loginUrl = "http://localhost:8080/userinfo-service/signin"
+  loginApp(loginData:LoginData):Observable<any>{
+    console.log("service call ===============")
+    
+    const header = { 'content-type': 'application/json' }
+    const body = JSON.stringify(loginData);
+    const params = new HttpParams()
+    .set('name',loginData.name)
+    .set('email',loginData.email)
+    .set('password',loginData.password)
+
+    console.log("params ===============")
+    console.log(params)
+    console.log(body)
+    return this.httpClient.post<any>(this.loginUrl, body, { headers: header, 'params': params});
+
+
+
   }
 }
 

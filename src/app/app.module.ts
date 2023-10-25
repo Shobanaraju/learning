@@ -24,6 +24,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatListModule } from '@angular/material/list';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AddStudentComponent } from './add-student/add-student.component';
 
 
 
@@ -35,7 +36,9 @@ import { RegisterComponent } from './register/register.component';
     RootComponent,
     ValueArrayPipePipe,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AddStudentComponent
+   
   ],
   imports: [
    
